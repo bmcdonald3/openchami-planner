@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Prompt for the OpenAI API Key (input is hidden for security)
-echo -n "Enter your OPENAI_API_KEY: "
-read -s OPENAI_API_KEY
+# Prompt for the OpenRouter API Key (input is hidden for security)
+echo -n "Enter your OPENROUTER_API_KEY: "
+read -s OPENROUTER_API_KEY
 echo ""
-export OPENAI_API_KEY
+export OPENROUTER_API_KEY
 
 echo "Starting Backend Server..."
 

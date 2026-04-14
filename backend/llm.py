@@ -18,6 +18,12 @@ import time
 
 try:
     import openai
+    # configure OpenRouter client if an API key is present
+    OR_KEY = os.getenv("OPENROUTER_API_KEY")
+    if OR_KEY:
+        # OpenRouter exposes an OpenAI-compatible API surface; set base and key
+        openai.api_base = "https://openrouter.ai/api/v1"
+        openai.api_key = OR_KEY
 except Exception:
     openai = None  # optional; tests should mock this behavior
 
@@ -42,11 +48,11 @@ def call_llm(prompt: str, schema_state: Dict[str, Any], timeout: int = 45, retri
     last_exc = None
     for attempt in range(1, retries + 1):
         try:
-            if openai and os.getenv("OPENAI_API_KEY"):
+            if openai and os.getenv("OPENROUTER_API_KEY"):
                 # NOTE: this code path is intentionally minimal. Tests should mock call_llm; real deployments
-                # must replace this with a robust Structured Outputs integration.
+                # must replace this with a robust Structured Outputs integration that enforces schemas.
                 resp = openai.ChatCompletion.create(
-                    model="gpt-4o-mini",
+                    model="openai/gpt-4o-2024-08-06",
                     messages=[{"role": "user", "content": prompt}],
                     timeout=timeout
                 )
