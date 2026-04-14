@@ -1,9 +1,9 @@
 Part 1: Improved Implementation Plan
 Phase 1: Environment Setup
 
-Initialize the project directory.
+- [x] Initialize the project directory.
 
-Run the following command to set up the frontend and backend environments:
+- [x] Run the following command to set up the frontend and backend environments:
 npm create vite@latest frontend --template react && cd frontend && npm install axios && cd ../ && python3 -m venv venv && source venv/bin/activate && pip install fastapi uvicorn openai pydantic cachetools
 
 Phase 2: Backend API and State Management
