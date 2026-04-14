@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# Prompt for the OpenRouter API Key (input is hidden for security)
-echo -n "Enter your OPENROUTER_API_KEY: "
-read -s OPENROUTER_API_KEY
-echo ""
+# Use existing OPENROUTER_API_KEY if set, otherwise prompt for it (input is hidden)
+if [ -z "${OPENROUTER_API_KEY:-}" ]; then
+  echo -n "Enter your OPENROUTER_API_KEY: "
+  read -s OPENROUTER_API_KEY
+  echo ""
+fi
 export OPENROUTER_API_KEY
 
 echo "Starting Backend Server..."

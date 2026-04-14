@@ -21,7 +21,7 @@ import zipfile
 import json
 
 # LLM helper
-from backend.llm import call_llm
+from llm import call_llm
 
 app = FastAPI()
 
